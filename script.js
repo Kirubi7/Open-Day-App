@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const classbackBtnThree = document.querySelector(".classback-btn_three");
     const classbackBtnFour = document.querySelector(".classback-btn_four");
     const faqs = document.querySelectorAll(".faq");
+    const inqueriesBtn = document.querySelector(".inqueries-btn");
+    const signInPage = document.querySelector(".sign-in");
+    const blurScreen = document.querySelector(".black-backdrop");
 
     /**
      * Toggles the category screen
@@ -35,6 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
         wrapper.classList.toggle("show-page4");
     };
 
+    const toggleSignInPage = () => {
+        signInPage.classList.toggle("active");
+        blurScreen.classList.toggle("active");
+        inqueriesBtn.classList.toggle("active")
+    };
+
     // ✅ Attach event listeners **ONLY IF ELEMENT EXISTS**
     if (startbtn) startbtn.addEventListener("click", toggleScreen);
     if (backbtn) backbtn.addEventListener("click", toggleScreen);
@@ -47,6 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
     if (clas3Tog) clas3Tog.addEventListener("click", toggleScreenPage3);
     if (classbackBtnThree) classbackBtnThree.addEventListener("click", toggleScreenPage3);
+
+    inqueriesBtn.addEventListener("click", toggleSignInPage); 
+    if(blurScreen) blurScreen.addEventListener("click", toggleSignInPage); 
+
+
+    
 
     // ❌ Uncomment below if Gallery should work
     // if (clas4Tog) clas4Tog.addEventListener("click", toggleScreenPage4);
