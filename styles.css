@@ -552,7 +552,15 @@ body{
     align-items: center;
     justify-content: center;
     background-color: #D0CFCF;
+    transition: all 0.3s;
 }
+
+.inqueries-btn.active{
+    z-index: 1;
+    bottom: 35rem;
+    transform: rotate(180deg);
+}
+
 
 .inqueries-btn:hover{
     transform: scale(1.1);
@@ -585,3 +593,110 @@ body{
     text-decoration: none;
     list-style-type: none;
   }
+
+
+.inqueries-btn:hover{
+    transform: scale(1.1);
+}
+
+.inqueries-btn svg{
+    width: 2rem;
+}
+
+
+
+.sign-in{
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    transition: all 0.3s;
+}
+.sign-in .heading{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.sign-in.active{
+    bottom: 0%;
+}
+
+
+.input-group{
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group label{
+    display: block;
+    width: 100%;
+}
+
+.input-group input{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.input-group label{
+    width: max-content;
+    padding: 0 5px;
+    margin-top: 5px;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.btns{
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btns button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btns button.sign-btn{
+    background-color: antiquewhite;
+}
+
+.sign-in-backdrop{
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 135%;
+    height: 30rem;
+    border-radius: 50% 50% 0 0;
+    background-color: #fff;
+    z-index: -1;
+}
+
+.black-backdrop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background-color: #00000023;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.black-backdrop.active{
+    opacity: 1;
+    visibility: visible;
+}
