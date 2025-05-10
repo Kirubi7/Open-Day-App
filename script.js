@@ -1,3 +1,20 @@
+// Declare toggle functions BEFORE DOMContentLoaded
+const toggleScreen = () => {
+    document.querySelector(".wrapper").classList.toggle("show-category");
+};
+const toggleScreenPage1 = () => {
+    document.querySelector(".wrapper").classList.toggle("show-page1");
+};
+const toggleScreenPage2 = () => {
+    document.querySelector(".wrapper").classList.toggle("show-page2");
+};
+const toggleScreenPage3 = () => {
+    document.querySelector(".wrapper").classList.toggle("show-page3");
+};
+const toggleScreenPage4 = () => {
+    document.querySelector(".wrapper").classList.toggle("show-page4");
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     const wrapper = document.querySelector(".wrapper");
     const startbtn = document.querySelector(".startbtn");
@@ -23,30 +40,47 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
-    /**
-     * Toggles the category screen
-     */
-    const toggleScreen = () => {
-        wrapper.classList.toggle("show-category");
+    const courseLinks = {
+        "Computer Science": "https://www.wlv.ac.uk/courses/bsc-hons-computer-science/",
+        "Engineering": "https://www.wlv.ac.uk/courses/beng-hons-mechanical-engineering/",
+        "Medicine": "https://www.wlv.ac.uk/courses/bsc-hons-public-health/",
+        "Law": "https://www.wlv.ac.uk/courses/llb-hons-law/",
+        "Creative Arts": "https://www.wlv.ac.uk/courses/ba-hons-creative-and-professional-writing-and-media/",
+        "Banking and Finance": "https://www.wlv.ac.uk/courses/ba-hons-banking-and-finance/",
+        "Business Administration": "https://www.wlv.ac.uk/courses/ba-hons-business-administration/",
+        "Journalism": "https://www.wlv.ac.uk/courses/ba-hons-multimedia-journalism/"
     };
 
-    /**
-     * Toggles between different screens
-     */
-    const toggleScreenPage1 = () => {
-        wrapper.classList.toggle("show-page1");
-    };
-    const toggleScreenPage2 = () => {
-        wrapper.classList.toggle("show-page2");
-    };
-    const toggleScreenPage3 = () => {
-        wrapper.classList.toggle("show-page3");
-    };
-    const toggleScreenPage4 = () => {
-        wrapper.classList.toggle("show-page4");
-    };
+    const toast = document.getElementById("toast");
+    const toastMessage = document.getElementById("toast-message");
+    const toastYes = document.getElementById("toast-yes");
+    const toastNo = document.getElementById("toast-no");
 
-    // ✅ Attach event listeners **ONLY IF ELEMENT EXISTS**
+    let selectedCourse = "";
+
+    document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("click", () => {
+            selectedCourse = card.querySelector("h4").innerText.trim();
+            toastMessage.innerText = `Would you like more information about "${selectedCourse}"?`;
+            toast.classList.remove("hidden");
+        });
+    });
+
+    toastYes.addEventListener("click", () => {
+        toast.classList.add("hidden");
+        const url = courseLinks[selectedCourse];
+        if (url) {
+            window.open(url, "_blank");
+        } else {
+            alert("Sorry, the course link isn't available.");
+        }
+    });
+
+    toastNo.addEventListener("click", () => {
+        toast.classList.add("hidden");
+    });
+
+    // ✅ Attach screen event listeners AFTER functions are defined
     if (startbtn) startbtn.addEventListener("click", toggleScreen);
     if (backbtn) backbtn.addEventListener("click", toggleScreen);
     
@@ -59,11 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (clas3Tog) clas3Tog.addEventListener("click", toggleScreenPage3);
     if (classbackBtnThree) classbackBtnThree.addEventListener("click", toggleScreenPage3);
 
-    // ❌ Uncomment below if Gallery should work
-    // if (clas4Tog) clas4Tog.addEventListener("click", toggleScreenPage4);
-    // if (classbackBtnFour) classbackBtnFour.addEventListener("click", toggleScreenPage4);
+    if (clas4Tog) clas4Tog.addEventListener("click", toggleScreenPage4);
+    if (classbackBtnFour) classbackBtnFour.addEventListener("click", toggleScreenPage4);
 
-    // ✅ Ensure FAQ toggle works without errors
     faqs.forEach((faq) => {
         faq.addEventListener("click", () => {
             faq.classList.toggle("active");

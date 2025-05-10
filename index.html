@@ -41,12 +41,19 @@
             </div>
 			<h1 class="category-title">Explore the Open Day</h1>
             <div class="categories-wrapper">
-                <div class="categories">
-                    <button class="class1 category">Events</button>
-                </div>
-                <div class="categories">
-                    <button class="class2 category">Courses</button>
-                </div>
+              <div class="categories">
+					<button class="class1 category" style="background-image: url('./Images/events_wlv.jpg'); background-size: cover; background-position: center; color: white;">
+					
+					</button>
+				</div>
+
+				<div class="categories">
+					<button class="class2 category" style="background-image: url('./Images/courses_wlv.png'); background-size: cover; background-position: center; color: white;">
+						
+					</button>
+				</div>
+
+
                 <div class="categories">
                     <button class="class3 category">FAQs</button>
                 </div>
@@ -226,7 +233,7 @@
 		</div>
 
         <!-- FAQs Page -->
-              <div class="screen class3-page">
+        <div class="screen class3-page">
             <div class="head-wrapper">
                 <button class="classback-btn_three">← Back</button>
             </div>
@@ -263,7 +270,22 @@
 
     </div>
 
-    <script src="script.js"></script>
+    
+	
+	
+	<!-- Toast Notification -->
+	<div id="toast" class="hidden">
+		<div class="toast-content">
+			<p id="toast-message">Would you like more information about this course?</p>
+			<div class="toast-actions">
+				<button id="toast-yes">Yes</button>
+				<button id="toast-no">No</button>
+			</div>
+		</div>
+	</div>
+	
+	<script src="script.js"></script>
+
 </body>
 
 </html>
